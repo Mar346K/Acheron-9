@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dkiao4l4s8yoe"]
+
+[ext_resource type="Script" path="res://systems/weapons/WallWeapon.cs" id="1_wallweapon"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ww"]
+size = Vector3(2, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww"]
+albedo_color = Color(1, 0.4, 0.05, 1)
+
+[node name="WallWeapon" type="Area3D" groups=["Interactable"]]
+script = ExtResource("1_wallweapon")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ww")
+
+[node name="GunMesh" type="CSGBox3D" parent="."]
+size = Vector3(2, 1, 0.5)
+material = SubResource("StandardMaterial3D_ww")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Weapon [500 Scrap]"

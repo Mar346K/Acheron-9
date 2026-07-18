@@ -1,0 +1,17 @@
+# Acheron-9 — Version Control Hygiene
+# See docs/Coding_Support/03_Version_Control_Hygiene.md
+
+# Godot 4 (.NET) editor cache and imported assets
+.godot/
+
+# .NET / Visual Studio / Rider build artifacts
+.mono/
+.vs/
+bin/
+obj/
+
+# Compiled translation binaries
+*.translation
+
+# Sensitive export configuration (contains keystore passwords)
+export_presets.cfg

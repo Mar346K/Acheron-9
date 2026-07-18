@@ -1,0 +1,153 @@
+# Map Overview: The Bio-Outpost (Chapter 1)
+
+**Canonical source of truth** for Chapter 1 map structure, Zone 1 layout, gating, and tactical resources.  
+**Arsenal source of truth:** `Weapons_and_Economy.md` · **Blood Arts source of truth:** `Blood_Arts_System.md`
+
+## Design Philosophy
+
+A circular loop split into two distinct visual and tactical halves (Zone 2A / 2B), funneling players from a multi-tier decontamination hub to a massive, high-mobility arena (Zone 3).
+
+### Zone Canon (Strict)
+
+| ID | Name |
+|----|------|
+| **Zone 1** | The Decontamination Hub |
+| **Zone 2A** | The Bio-Wing |
+| **Zone 2B** | The Industrial Wing |
+| **Zone 3** | The Mag-Train Platform |
+
+---
+
+## I. Zone Breakdown (Visuals & Gating)
+
+| Zone | Name | Structure | Gates / Obstacles | Machine Ingress |
+|------|------|-----------|-------------------|-----------------|
+| 1 | The Decontamination Hub (Spawn) | Multi-tier hub (3 micro-zones) | 2 primary locked gates (2A / 2B), Cost: 750 Scrap each | Skylight drop, 2 wall vents, 1 floor grate |
+| 2A | The Bio-Wing | 3 Rooms | 3 locked blast doors | Floor grates, shattered glass ceilings |
+| 2B | The Industrial Wing | 3 Rooms | 2 locked doors, 1 destructible debris pile | Open trenches, cargo elevators |
+| 3 | The Mag-Train Platform (Apex) | 1 open arena | 2 entry gates, Main Power Switch | 8 dynamic spawns |
+
+### Zone 1: The Decontamination Hub (Spawn) — Canon Layout
+
+A massive, multi-tiered security and decontamination block. First impression teaches facility scale, verticality, and Bio-Kinetic practice before heavy machines arrive.
+
+#### Architectural Schematic
+
+```text
+=========================================================================
+                      [VENT 1: Shattered Skylight]
+                                   |
++-----------------------------------------------------------------------+
+|                       THE OBSERVATION DECK (Elevated)                 |
+| [VENT 2]                                                     [VENT 3] |
+| (Wall)         [FABRICATOR SPAWN]      [OVERLOOK RAILING]    (Wall)   |
+|                                                                       |
++-------[STAIRWAY A]-------------------------------[STAIRWAY B]---------+
+             |                                           |
+             |            [DECON CHAMBER A]              |
+[GATE A]     |             (Glass/Anchor)                |     [GATE B]
+(Zone 2A)----|                                           |----(Zone 2B)
+(Cost: 750)  |               [SPAWN ZONE]                |   (Cost: 750)
+             |          (Central Purge Grate)            |
+             |                                           |
+             |            [DECON CHAMBER B]              |
+             |             (Glass/Anchor)                |
+             +-------------------------------------------+
+                                   |
+                       [THE SECURITY CHECKPOINT]
+                                   |
+ [VENT 4: Floor]  [PERK: Necro-Pulse]  [VITAE SPLICER]  [WALLBUYS:
+                  Scrap-Pistol / Trench-Gun]
+=========================================================================
+```
+
+#### Micro-Zones & Tactical Flow
+
+- **The Purge Grate (Center):** Player wake-up. Flanked by two massive cylindrical glass Decon Chambers (primary Anchor Points). Players use Vault-Boost over control consoles to create distance from Scrap-Walkers.
+- **The Observation Deck (North):** Elevated metal catwalk overlooking the spawn, accessed by two steep stairways. Introduces verticality immediately—run up, force machines to follow, dive over the railing to gap pursuit. Stairways are ideal Momentum Slide practice inclines. Fabricator Anchor Point lives here.
+- **The Security Checkpoint (South):** Cluttered bottleneck (luggage scanners, riot barricades). Houses the *Scrap-Pistol* and *Trench-Gun* wallbuys, Necro-Pulse perk, and the **Vitae Splicer** (2,000 Scrap to swap Blood Arts). High-risk: early perk/art grabs can trap the player if a machine climbs from the floor vent behind them.
+
+#### Gates / Obstacles
+
+- **Gate A (Left):** Zone 2A Bio-Wing — 750 Scrap.
+- **Gate B (Right):** Zone 2B Industrial Wing — 750 Scrap.
+- Players choose which wing to open first with early Scrap.
+
+#### Machine Ingress
+
+| Ingress | Location | Behavior |
+|---------|----------|----------|
+| Vent 1 — Shattered Skylight | Above Observation Deck | Dramatic spawn; Hunter-Killers drop onto the catwalk |
+| Vent 2 & 3 — Deck Walls | Observation Deck walls | Standard vents; Scrap-Walkers pry metal grating apart |
+| Vent 4 — Floor Grate | Security Checkpoint | Machines crawl from below; forces footing awareness |
+
+#### Environmental Storytelling
+
+Failed quarantine: flashing amber emergency lights, discarded hazmat gear, heavy blast doors. The room should read as a desperate last stand before machines arrive.
+
+---
+
+### Zone 2A: The Bio-Wing
+
+- **Visual Identity:** Overgrown, humid, and shattered. Massive, broken glass terrariums fill the space. Acheron-9's toxic flora is actively eating through the facility walls.
+- **Structure:** 3 Rooms (Connecting Corridor, Hydroponics Bay, Specimen Labs).
+- **Gates/Obstacles:** 3 locked blast doors separating the rooms, scaling in Scrap cost.
+- **Machine Ingress:** Floor grates (hidden by overgrown roots) and shattered glass ceilings where Hunter-Killers drop in.
+
+### Zone 2B: The Industrial Wing
+
+- **Visual Identity:** Brutalist, angular, and glowing with geothermal heat. Heavy metal grating, deep coolant trenches, and sparks falling from severed cables.
+- **Structure:** 3 Rooms (Airlock, Geothermal Trench, Boiler Room). Detailed blueprint: `zone-2b/IndWing_Blueprint.md`.
+- **Gates/Obstacles:** 2 locked doors and 1 destructible debris pile blocking the catwalks.
+- **Machine Ingress:** Open trenches where machines climb up over the railings, and heavy cargo elevators that periodically open to release machine squads.
+
+### Zone 3: The Mag-Train Platform (The Apex)
+
+- **Visual Identity:** A cavernous, multi-level transit hub. A massive, dormant, heavily armored cargo train sits in the center. The facility's main power array towers in the background.
+- **Structure:** 1 massive, open arena.
+- **Gates/Obstacles:** 2 entry gates (connecting from Zone 2A and Zone 2B) and the Main Power Switch (requires a Scrap deposit to flip).
+- **Machine Ingress:** 8 dynamic spawns, including train-car doors sliding open and dropships crashing through the roof.
+- **Campaign:** Mag-Train extraction after objectives (see `puzzles/Narrative_Puzzles.md`). **Endless:** train sealed.
+
+---
+
+## II. Room Features & Tactical Resources
+
+Wallbuy names and tiers match `Weapons_and_Economy.md` (source of truth).
+
+| Zone | Weapons (Wallbuys) | Perks / Terminals | Traps | 3D Fabricator |
+|------|--------------------|-------------------|-------|---------------|
+| 1 — Decontamination Hub | Tier 1 *Scrap-Pistol* (500), Tier 2 *Trench-Gun* (750) | Necro-Pulse (aux power, available immediately); **Vitae Splicer** (2,000 Scrap Blood Art swap) | — | 1 Anchor Point (Observation Deck) |
+| 2A — Bio-Wing | Tier 4 *Defoliant Sprayer* (1250), Tier 7 *Mag-Rail Shotgun* (2000) | Vampiric Stride (Stamin-Up) at back of Specimen Labs | Corrosive Sprinklers (Hydroponics Bay), Pheromone Vents (Specimen Labs) | 2 potential Anchor Points |
+| 2B — Industrial Wing | Tier 3 *Rivet-Repeater* (1000), Tier 5 *Kinetic DMR* (1500), Tier 6 *Ion-Burst Pistol* (1750) | Crimson Chamber (Double Tap) near trench edge | Mag-Crushers (Geothermal Trench) | 2 potential Anchor Points |
+| 3 — Mag-Train Platform | Tier 8 *Plasma-Cutter Auto-Rifle* (2250), Tier 9 *Aegis-Breaker* (2500), Tier 10 *Heavy Mass-Driver* (2750), Tier 11 *Vanguard Cannon* (3000) | Goliath Marrow and Synaptic Overdrive (require Main Power) | Arc-Coil Overload (map-wide EMP) | 1 central, highly exposed Anchor Point |
+
+---
+
+## III. Layout & Tactical Advantages (Bio-Kinetic Synergy)
+
+### Zone 1 Hub Training
+
+- Decon Chambers and Observation Deck stairs teach Vault-Boost, Momentum Slide, and vertical kiting before wing commitment.
+- Security Checkpoint is a deliberate early risk/reward dead-end for Necro-Pulse and the Vitae Splicer.
+
+### The Kiting Loop (Zone 2A — Bio-Wing)
+
+- **Tactical Layout:** The shattered terrariums act as massive Anchor Points in the center of the rooms.
+- **Momentum Synergy:** The floor is slick with condensation and overgrown vines, creating natural ramps. Players can chain Momentum Slides in massive, endless circles around the terrariums, grouping machines for explosive or spread-based weapons.
+
+### The Choke Point (Zone 2B — Industrial Wing)
+
+- **Tactical Layout:** A narrow, linear push. The central trench divides the room, leaving only two narrow catwalks on the sides.
+- **Momentum Synergy:** A designated "Death Zone" if a player stops moving. Players rely on Wall-Kick between corridor walls and railings to stay above heavy Vanguard units (Ablative Plasma-Plating) that block the path.
+
+### The Last Stand (Zone 3 — Mag-Train Platform)
+
+- **Tactical Layout:** Highly vertical. Players can climb on top of the train cars, dive under the loading docks, or hold the high ground on the power terminal stairs.
+- **Momentum Synergy:** The ultimate test of the Vault-Boost. Players maintain maximum Kinetic Heat by vaulting between train cars and pillars. If cornered on a train, a Blood Art (e.g., *Apex Ossification* to smash through the line, or *Coagulated Wraith* to slip past thermal tracking) creates the escape window to drop back to the floor.
+
+---
+
+## Appendix: Image Generation Prompt (Zone 1)
+
+> A complex, top-down 2D architectural blueprint of a massive sci-fi decontamination hub, video game level design map. The layout features three distinct sections. In the center is a large circular purge grate flanked by two massive glass decontamination cylinders. To the north is an elevated observation deck with two sets of stairs leading down to the center. To the south is a cluttered security checkpoint with overturned barricades, a weapon rack, a Vitae Splicer terminal, and a glowing medical centrifuge. There are two heavy blast doors on the far left and right walls. Industrial sci-fi aesthetic, flashing amber lights, deep shadows, intricate floor tiling, perfectly flat top-down orthographic camera angle.

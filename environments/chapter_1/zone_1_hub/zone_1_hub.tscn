@@ -1,0 +1,286 @@
+[gd_scene load_steps=13 format=3 uid="uid://c9acheron9zone1hub0"]
+
+[ext_resource type="PackedScene" uid="uid://b8acheron9player01" path="res://entities/player/Player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://core/OOBReset.cs" id="2_oob"]
+[ext_resource type="PackedScene" uid="uid://cwallweapon00001" path="res://systems/weapons/WallWeapon.tscn" id="3_wallweapon"]
+[ext_resource type="PackedScene" uid="uid://2v8qk5l0ufe3" path="res://entities/enemies/scrap_walker/ScrapWalker.tscn" id="4_scrapwalker"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hub"]
+
+[sub_resource type="Sky" id="Sky_hub"]
+sky_material = SubResource("ProceduralSkyMaterial_hub")
+
+[sub_resource type="Environment" id="Environment_hub"]
+background_mode = 2
+sky = SubResource("Sky_hub")
+ambient_light_source = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oob"]
+size = Vector3(200, 2, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grate"]
+transparency = 1
+albedo_color = Color(0.2, 0.2, 0.2, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.4, 0.26, 0.13, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.2, 0.3, 0.6, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_accent"]
+albedo_color = Color(0.85, 0.8, 0.2, 1)
+
+[node name="Zone1Hub" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hub")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071068, 0, -0.7071068, -0.5, 0.7071068, -0.5, 0.5, 0.7071068, 0.5, 0, 8, 0)
+shadow_enabled = true
+
+[node name="MapGeometry" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(40, 1, 40)
+material = SubResource("StandardMaterial3D_floor")
+
+[node name="WallNorth" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -20)
+size = Vector3(40, 4, 0.5)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="WallSouth" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 20)
+size = Vector3(40, 16, 0.5)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="WallWest" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 8, 0)
+size = Vector3(0.5, 16, 40)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="WallEast" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 8, 0)
+size = Vector3(0.5, 16, 40)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="DeconChamberA" type="CSGCylinder3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3, 0)
+radius = 3.0
+height = 6.0
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="DeconChamberB" type="CSGCylinder3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, 0)
+radius = 3.0
+height = 6.0
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="ObservationDeck" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -15)
+size = Vector3(40, 1, 10)
+
+[node name="DeckBackWall" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -20)
+size = Vector3(40, 12, 0.5)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="StairwayA" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 0.8944272, -0.4472136, 0, 0.4472136, 0.8944272, -6, 2.15, -5.3)
+size = Vector3(4, 1, 10.5)
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="StairwayB" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 0.8944272, -0.4472136, 0, 0.4472136, 0.8944272, 6, 2.15, -5.3)
+size = Vector3(4, 1, 10.5)
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="RailingCenter" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(8, 1, 0.3)
+
+[node name="RailingCenterL" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5, -10)
+size = Vector3(6, 1, 0.3)
+
+[node name="RailingCenterR" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 5, -10)
+size = Vector3(6, 1, 0.3)
+
+[node name="RailingLeft" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 5, -10)
+size = Vector3(2, 1, 0.3)
+
+[node name="RailingRight" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 5, -10)
+size = Vector3(2, 1, 0.3)
+
+[node name="Barricade1" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, 15)
+size = Vector3(2, 1, 0.5)
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="Barricade2" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.6, 13.5)
+size = Vector3(0.5, 1.2, 3)
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="Barricade3" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 16)
+size = Vector3(2, 1, 0.5)
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="LuggageScanner" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.75, 15)
+size = Vector3(1.5, 1.5, 1.5)
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="Barricade4" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 17)
+size = Vector3(3, 1, 0.5)
+material = SubResource("StandardMaterial3D_accent")
+
+[node name="GateA_Frame" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2, 0)
+size = Vector3(1.5, 4, 5)
+
+[node name="GateB_Frame" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 2, 0)
+size = Vector3(1.5, 4, 5)
+
+[node name="GateA_Recess" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8, 1.5, 0)
+operation = 2
+size = Vector3(1.2, 3, 3.5)
+
+[node name="GateB_Recess" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 1.5, 0)
+operation = 2
+size = Vector3(1.2, 3, 3.5)
+
+[node name="VentWestHole" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, -12)
+operation = 2
+size = Vector3(1, 3, 4)
+
+[node name="VentEastHole" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2, -12)
+operation = 2
+size = Vector3(1, 3, 4)
+
+[node name="FloorGrateHole" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 10)
+operation = 2
+size = Vector3(3, 1.4, 3)
+
+[node name="SpawnRoomWest_Floor" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.25, -12)
+size = Vector3(10, 0.5, 6)
+
+[node name="SpawnRoomWest_Ceiling" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 4.25, -12)
+size = Vector3(10, 0.5, 6)
+
+[node name="SpawnRoomWest_BackWall" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.25, -12)
+size = Vector3(0.5, 4.5, 6)
+
+[node name="SpawnRoomWest_SideN" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 2.25, -15)
+size = Vector3(10, 4.5, 0.5)
+
+[node name="SpawnRoomWest_SideS" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 2.25, -9)
+size = Vector3(10, 4.5, 0.5)
+
+[node name="SpawnRoomEast_Floor" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.25, -12)
+size = Vector3(10, 0.5, 6)
+
+[node name="SpawnRoomEast_Ceiling" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 4.25, -12)
+size = Vector3(10, 0.5, 6)
+
+[node name="SpawnRoomEast_BackWall" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.25, -12)
+size = Vector3(0.5, 4.5, 6)
+
+[node name="SpawnRoomEast_SideN" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 2.25, -15)
+size = Vector3(10, 4.5, 0.5)
+
+[node name="SpawnRoomEast_SideS" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 2.25, -9)
+size = Vector3(10, 4.5, 0.5)
+
+[node name="GrateWest" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, -12)
+size = Vector3(0.1, 3, 4)
+material = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateEast" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2, -12)
+size = Vector3(0.1, 3, 4)
+material = SubResource("StandardMaterial3D_grate")
+
+[node name="Pit_Floor" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.25, 10)
+size = Vector3(4, 0.5, 4)
+
+[node name="Pit_WallW" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.5, 10)
+size = Vector3(0.5, 3, 4)
+
+[node name="Pit_WallE" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.5, 10)
+size = Vector3(0.5, 3, 4)
+
+[node name="Pit_WallN" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 8)
+size = Vector3(4, 3, 0.5)
+
+[node name="Pit_WallS" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 12)
+size = Vector3(4, 3, 0.5)
+
+[node name="FloorGratePanel" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 10)
+use_collision = true
+size = Vector3(3, 0.1, 3)
+material = SubResource("StandardMaterial3D_grate")
+
+[node name="DeckCeiling" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, -15)
+size = Vector3(40, 1, 10)
+
+[node name="SkylightHole" type="CSGBox3D" parent="MapGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, -15)
+operation = 2
+size = Vector3(12, 2, 6)
+
+[node name="OOB_Reset" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+script = ExtResource("2_oob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OOB_Reset"]
+shape = SubResource("BoxShape3D_oob")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="WallWeapon_ScrapPistol" parent="." instance=ExtResource("3_wallweapon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, 19.4)
+WeaponName = "Scrap-Pistol"
+ScrapCost = 500
+
+[node name="WallWeapon_TrenchGun" parent="." instance=ExtResource("3_wallweapon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 19.4)
+WeaponName = "Trench-Gun"
+ScrapCost = 750
+
+[node name="ScrapWalker" parent="." instance=ExtResource("4_scrapwalker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -12)
